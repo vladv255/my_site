@@ -1,6 +1,6 @@
-import type { Card } from "../types/card";
+import type { CardType } from "../types/card";
 
-export const cards: Card[] = [
+export const cards: CardType[] = [
     {name: 'ChatGPT', description: 'Conversational AI for text generation', category: 'Text'},
     {name: 'Midjourney', description: 'AI image generation tool', category: 'Image'},
     {name: 'Runway', description: 'AI video editing and generation', category: 'Video'},
