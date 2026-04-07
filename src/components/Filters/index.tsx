@@ -1,34 +1,38 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import type { CardType } from '../../types/card'
 import { filterOptions } from '../../consts/filter_options';
-import { cards } from '../../consts/cards';
+import { filterEffect } from '../../utils/filtered'
+
 
 interface FiltersProps{
-  setSortedCards: (sortedCards:CardType[]) => void
+  setSortedCards: (cards:CardType[]) => void;
 }
-export function Filters({setSortedCards}:FiltersProps) {
-  function filter(setSortedCards: (sortedCards:CardType[]) => void, option: string){
-    if (option === "All") {
-    setSortedCards(cards);
-    return;
-  }
+export const Filters = ({setSortedCards}:FiltersProps) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [category, setCategory] = useState("All");
+  
+  useEffect(() => {
+    
+    const filtered = filterEffect(category, searchQuery);
 
-  const filtered = cards.filter(item => item.category === option);
-  setSortedCards(filtered);
-
-  }
+    setSortedCards(filtered);
+  }, [searchQuery, category, setSortedCards]);
 
   return (
     <div className="controls">
-      <input type="text" placeholder="Search by name..." />
+      <input type="text" 
+              placeholder="Search by name..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              />
 
-      <select onChange={(e) => filter(setSortedCards, e.target.value)}>
+      <select onChange={(e) => setCategory(e.target.value)} value={category}>
         {filterOptions.map((option)=> (
-          <option>
+          <option key={option} value={option}>
             {option}
           </option>
         ))}
       </select>
     </div>
-  )
+  );
 }
