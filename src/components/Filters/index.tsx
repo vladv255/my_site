@@ -10,13 +10,23 @@ interface FiltersProps{
 export const Filters = ({setSortedCards}:FiltersProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [category, setCategory] = useState("All");
+
+  const [debouncedSearch, setDebouncedSearch] = useState(searchQuery);
+
+  useEffect (() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+
+    return() => clearTimeout(handler);
+  }, [searchQuery]);
   
   useEffect(() => {
     
-    const filtered = filterEffect(category, searchQuery);
+    const filtered = filterEffect(category, debouncedSearch);
 
     setSortedCards(filtered);
-  }, [searchQuery, category, setSortedCards]);
+  }, [debouncedSearch, category, setSortedCards]);
 
   return (
     <div className="controls">
