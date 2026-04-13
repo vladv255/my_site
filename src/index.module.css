@@ -13,3 +13,9 @@
     box-sizing: border-box;
     padding: 40px 20px;
 }
+
+.noResults {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+}
