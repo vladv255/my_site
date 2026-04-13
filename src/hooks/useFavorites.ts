@@ -1,10 +1,10 @@
 import {useState} from 'react';
 
 export const useFavorites = () => {
-    const [favorites, setFavorites] = useState<string[]>([]);
+    const [favorites, setFavorites] = useState<number[]>([]);
 
-    const toggleFavorite = (name: string) => {
-        setFavorites(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]
+    const toggleFavorite = (id: number) => {
+        setFavorites(prev => prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
     );
     };
 

@@ -5,10 +5,13 @@ import { filterEffect } from '../../utils/filtered'
 import styles from './Filters.module.css'
 
 
+
 interface FiltersProps{
   setSortedCards: (cards:CardType[]) => void;
+  isOnlyFav: boolean;
+  favorites: number[];
 }
-export const Filters = ({setSortedCards}:FiltersProps) => {
+export const Filters = ({setSortedCards, isOnlyFav, favorites}:FiltersProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [category, setCategory] = useState("All");
 
@@ -22,12 +25,13 @@ export const Filters = ({setSortedCards}:FiltersProps) => {
     return() => clearTimeout(handler);
   }, [searchQuery]);
   
+
   useEffect(() => {
     
-    const filtered = filterEffect(category, debouncedSearch);
+    const filtered = filterEffect(category, debouncedSearch, isOnlyFav, favorites);
 
     setSortedCards(filtered);
-  }, [debouncedSearch, category, setSortedCards]);
+  }, [debouncedSearch, category, setSortedCards, isOnlyFav, favorites]);
 
   return (
     <div className={styles.container}>

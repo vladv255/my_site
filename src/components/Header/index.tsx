@@ -5,9 +5,11 @@ import styles from './Header.module.css'
 interface HeaderProps {
   onThemeToggle: () => void;
   favCount: number;
+  isOnlyFav: boolean;
+  onFavToggle: () => void;
 }
 
-export function Header({onThemeToggle, favCount}: HeaderProps) {
+export function Header({onThemeToggle, favCount, isOnlyFav, onFavToggle}: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.headerInner}`}>
@@ -17,7 +19,9 @@ export function Header({onThemeToggle, favCount}: HeaderProps) {
           className={styles.themeBtn}>
           Change theme
         </button>
-        <div className={styles.favorites}>
+        <div className={`${styles.favorites} ${isOnlyFav ? styles.active : ''}`}
+             onClick={onFavToggle}
+             style={{cursor: 'pointer'}}>
            ❤️ <span>{favCount}</span>
         </div>
        </div>
