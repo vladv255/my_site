@@ -1,0 +1,15 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;   
+    width: 100%;
+    box-sizing: border-box;
+    padding: 40px 20px;
+}

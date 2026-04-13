@@ -1,7 +1,8 @@
 import React, {useState, useEffect } from 'react'
 import type { CardType } from '../../types/card'
-import { filterOptions } from '../../consts/filter_options';
+import { filterOptions } from '../../consts/filter_options'
 import { filterEffect } from '../../utils/filtered'
+import styles from './Filters.module.css'
 
 
 interface FiltersProps{
@@ -29,14 +30,15 @@ export const Filters = ({setSortedCards}:FiltersProps) => {
   }, [debouncedSearch, category, setSortedCards]);
 
   return (
-    <div className="controls">
+    <div className={styles.container}>
       <input type="text" 
+              className={styles.input}
               placeholder="Search by name..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               />
 
-      <select onChange={(e) => setCategory(e.target.value)} value={category}>
+      <select className={styles.select} onChange={(e) => setCategory(e.target.value)} value={category}>
         {filterOptions.map((option)=> (
           <option key={option} value={option}>
             {option}
