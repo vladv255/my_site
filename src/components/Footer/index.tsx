@@ -13,11 +13,11 @@ export function Footer() {
         <div className={styles.contact}>
           <div>
             <strong>Name Surname</strong> <br/> 
-            Frontend | @telegram мб вставить ссылку
+            Frontend | @Sunny_255
           </div>
           <div>
               <strong>Name Surname</strong> <br/>
-              DevOps | @telegram
+              DevOps | @D1ckiy
           </div>
         </div>
       </div>
