@@ -12,11 +12,11 @@ export function Footer() {
           </p>
         <div className={styles.contact}>
           <div>
-            <strong>Name Surname</strong> <br/> 
+            <strong>Vlad Zamyatnin</strong> <br/> 
             Frontend | @Sunny_255
           </div>
           <div>
-              <strong>Name Surname</strong> <br/>
+              <strong>Roman Manyshev</strong> <br/>
               DevOps | @D1ckiy
           </div>
         </div>
